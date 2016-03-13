@@ -9,7 +9,7 @@ global.$ = require( "jquery" );
 global.jQuery = global.$;
 require( "bootstrap" );
 
-let state = { loading: true, volumes: [], damId: "", error: null, books: [], verses: [], bookId: "" };
+let state = { loading: true, volumes: [], damId: "", error: null, books: [], verses: [], bookId: "", results: { total: 0, hasResults: false, results: [] } };
 
 appView.on( "rendered", ( html ) => {
 	document.getElementById( "main" ).innerHTML = html;
@@ -25,6 +25,11 @@ const registerEvents = () => {
 	$( "#book" ).on( "change", ( e ) => {
 		state.bookId = $( "#book" ).val();
 		loadBook();
+	} );
+
+	$( "#back" ).click( ( e ) => {
+		e.stopPropagation();
+		render( "home" );
 	} );
 };
 
@@ -107,7 +112,7 @@ const loadBook = () => {
 
 const search = () => {
 	state.loading = true;
-	state.results = [];
+	state.results = { total: 0, results: [], hasResults: false };
 	render( "search" );
 	client.textSearch( state.damId, { query: state.searchText }, ( err, res ) => {
 		state.loading = false;
@@ -115,8 +120,7 @@ const search = () => {
 			state.error = err;
 			render( "search" );
 		} else {
-			console.log ( res );
-			const results = { total: res[0][0].total_results, results: res[1] };
+			const results = { total: res[0][0].total_results, results: res[1], hasResults: res[1].length > 0 };
 
 			state.results = results;
 			render( "search" );

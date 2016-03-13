@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Electron Bible</title>
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="./styles/main.css" rel="stylesheet" type="text/css">
+
+    <script src="./vendor/electron_boilerplate/context_menu.js"></script>
+    <script src="./vendor/electron_boilerplate/external_links.js"></script>
+    <script src="src/app.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Electron Bible</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<form class="navbar-form navbar-right" role="search" id="search-form">
+					<div class="form-group">
+						<input type="search" class="form-control" placeholder="Search" id="search-text">
+					</div>
+				</form>
+			</div>
+		</div>
+	</nav>
+    <div class="container" id="main">
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{{#if loading}}
+	<p class="loading">Searching...</p>
+
+{{else}}
+	<h2>Search Results</h2>
+	<p><a href="#" id="back">&lt; Back</a></p>
+	{{#if results}}
+		<p>Total results: {{results.total}}</p>
+		{{#each results.results}}
+			<div class="search-verse">{{verse_text}}</div>
+			<div class="search-ref">
+				{{book_name}} {{chapter_id}}:{{verse_id}}
+			</div>
+		{{/each}}
+	{{else}}
+		<p class="no-results">No results returned.</p>
+	{{/if}}
+{{/if}}
+

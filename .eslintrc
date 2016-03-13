@@ -1,0 +1,22 @@
+{
+  "globals": {
+    "DEBUG": false,
+    "define": false,
+    "$": false
+  },
+
+  "ecmaFeatures": {
+    "modules" : true
+  },
+
+  "env": {
+    "es6": true
+  },
+
+  "rules": {
+    "no-undef": 2,
+    "no-unused-vars": [2, {"vars": "all", "args": "none"}],
+    "no-underscore-dangle" : 0,
+    "camelcase": [0, { "properties": "never" }]
+  }
+}

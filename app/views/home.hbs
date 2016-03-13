@@ -1,0 +1,32 @@
+{{#if volumes}}
+	<div class="select-volume">
+		<select id="volume">
+			<option value="">(Select Version)</option>
+		{{#each volumes}}
+			<option value="{{dam_id}}" {{#if (isEqual ../damId dam_id)}} selected {{/if}}>{{version_english}} - {{collection_name}}</option>
+		{{/each}}
+		</select>
+	</div>
+{{/if}}
+
+{{#if books}}
+	<div class="select-book">
+		<select id="book">
+			<option value="">(Select Book)</option>
+			{{#each books}}
+				<option value="{{book_id}}" {{#if (isEqual ../bookId book_id)}} selected {{/if}}>{{book_name}}</option>
+			{{/each}}
+		</select>
+	</div>
+{{/if}}
+
+{{#if verses}}
+	{{#each verses}}
+		{{#if book}}<h2>{{book}}</h2>{{/if}}
+		{{#if chapter}}<h3>{{chapter}}</h3>{{/if}}
+		<span class="verse-id">{{id}}</span>
+		<span class="verse-text">{{text}}</span>
+	{{/each}}
+{{/if}}
+
+{{!-- #if loading}}<p class="loading">Loading...</p>{{/if --}}

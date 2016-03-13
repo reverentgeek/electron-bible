@@ -1,0 +1,19 @@
+{
+  "name": "electron-bible",
+  "productName": "Electron Bible App",
+  "identifier": "com.reverentgeek.electron-bible",
+  "description": "Electron Bible Application",
+  "version": "0.1.0",
+  "author": "David Neal",
+  "copyright": "© 2016, ReverentGeek",
+  "main": "background.js",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "digital-bible-platform": "^0.2.0",
+    "fs-jetpack": "^0.7.0",
+    "handlebars": "^4.0.5",
+    "jquery": "^2.2.1",
+    "lodash": "^4.6.1",
+    "xhr2": "^0.1.3"
+  }
+}

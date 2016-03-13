@@ -30,7 +30,9 @@ app.on( "ready", function() {
 		x: mainWindowState.x,
 		y: mainWindowState.y,
 		width: mainWindowState.width,
-		height: mainWindowState.height
+		height: mainWindowState.height,
+		minWidth: 780,
+		minHeight: 400
 	} );
 
 	if ( mainWindowState.isMaximized ) {

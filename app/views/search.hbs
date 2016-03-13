@@ -1,3 +1,28 @@
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Electron Bible</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			{{#if volumes}}
+			<div class="btn-group volume-select-group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{volume}} <span class="caret"></span></button>
+				<ul class="dropdown-menu">
+					{{#each volumes}}
+					<li><a href="#" id="{{dam_id}}" class="volume-select">{{version_english}} - {{collection_name}}</a></li>
+					{{/each}}
+				</ul>
+			</div>
+			{{/if}}
+			<form class="navbar-form navbar-right" role="search" id="search-form">
+				<div class="form-group">
+					<input type="search" class="form-control" placeholder="Search" id="search-text" value="{{searchText}}">
+				</div>
+			</form>
+		</div>
+	</div>
+</nav>
+
 {{#if loading}}
 	<p class="loading">Searching...</p>
 

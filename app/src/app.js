@@ -9,7 +9,7 @@ global.$ = require( "jquery" );
 global.jQuery = global.$;
 require( "bootstrap" );
 
-let state = { loading: true, volumes: [], damId: "", error: null, books: [], verses: [], bookId: "", results: { total: 0, hasResults: false, results: [] } };
+let state = { loading: true, volume: "Select Bible", volumes: [], damId: "", error: null, books: [], verses: [], bookId: "", results: { total: 0, hasResults: false, results: [] } };
 
 appView.on( "rendered", ( html ) => {
 	document.getElementById( "main" ).innerHTML = html;
@@ -17,13 +17,22 @@ appView.on( "rendered", ( html ) => {
 } );
 
 const registerEvents = () => {
-	$( "#volume" ).on( "change", ( e ) => {
-		state.damId = $( "#volume" ).val();
+	$( "#search-form" ).submit( ( e ) => {
+		e.preventDefault();
+		state.searchText = $( "#search-text" ).val();
+		search();
+	} );
+
+	$( ".volume-select" ).click( ( e ) => {
+		e.stopPropagation();
+		state.volume = $( e.target ).text();
+		state.damId = e.target.id;
 		loadVolume();
 	} );
 
-	$( "#book" ).on( "change", ( e ) => {
-		state.bookId = $( "#book" ).val();
+	$( ".book-link" ).click( ( e ) => {
+		e.stopPropagation();
+		state.bookId = e.target.id;
 		loadBook();
 	} );
 
@@ -114,7 +123,7 @@ const search = () => {
 	state.loading = true;
 	state.results = { total: 0, results: [], hasResults: false };
 	render( "search" );
-	client.textSearch( state.damId, { query: state.searchText }, ( err, res ) => {
+	client.textSearch( state.damId, { query: escape( state.searchText ) }, ( err, res ) => {
 		state.loading = false;
 		if ( err ) {
 			state.error = err;
@@ -131,10 +140,5 @@ const search = () => {
 document.addEventListener( "DOMContentLoaded", () => {
 	render( "home" );
 	getVolumes();
-	$( "#search-form" ).submit( ( e ) => {
-		e.preventDefault();
-		state.searchText = $( "#search-text" ).val();
-		search();
-	} );
 } );
 

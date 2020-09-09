@@ -23,7 +23,7 @@
     "handlebars": "^4.0.5",
     "q": "^1.4.1",
     "rollup": "^0.25.4",
-    "tree-kill": "^0.1.1",
+    "tree-kill": "^1.2.2",
     "yargs": "^4.2.0"
   },
   "optionalDependencies": {
